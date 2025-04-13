@@ -10,3 +10,4 @@ langchain-openai
 chromadb
 pypdf
 bs4
+pysqlite3-binary

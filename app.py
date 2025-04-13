@@ -20,6 +20,7 @@ from dataclasses import dataclass
 import random
 import string
 import openai
+import pysqlite3 as sqlite3
 
 # Apply nest_asyncio first to handle event loops
 nest_asyncio.apply()
