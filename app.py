@@ -40,10 +40,24 @@ def initialize_rag():
         chunk_overlap=200
     )
     
-    # Create vector store directory if not exists
-    os.makedirs("data/vector_store", exist_ok=True)
-    os.makedirs("data/pdfs", exist_ok=True)
-    os.makedirs("data/texts", exist_ok=True)
+    # Create directories with proper permissions
+    base_dir = os.path.expanduser("~/Documents/data/projects/ai/my-projects/agent-wine")
+    vector_store_dir = os.path.join(base_dir, "data/vector_store")
+    pdfs_dir = os.path.join(base_dir, "data/pdfs")
+    texts_dir = os.path.join(base_dir, "data/texts")
+    
+    # Create directories if they don't exist
+    for dir_path in [vector_store_dir, pdfs_dir, texts_dir]:
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path, mode=0o777, exist_ok=True)
+    
+    # Ensure Chroma database file has proper permissions
+    db_path = os.path.join(vector_store_dir, "chroma.sqlite3")
+    if os.path.exists(db_path):
+        try:
+            os.chmod(db_path, 0o666)  # rw-rw-rw-
+        except Exception as e:
+            print(f"Warning: Could not set database permissions: {e}")
     
     return embeddings, text_splitter
 
@@ -103,7 +117,8 @@ def process_website(url: str):
 def reset_vector_store():
     """Reset the vector store by properly cleaning up the Chroma instance and its files."""
     import shutil
-    vector_store_dir = "data/vector_store"
+    base_dir = os.path.expanduser("~/Documents/data/projects/ai/my-projects/agent-wine")
+    vector_store_dir = os.path.join(base_dir, "data/vector_store")
     
     # First, try to properly delete the Chroma collection
     try:
@@ -122,7 +137,22 @@ def reset_vector_store():
     # Then remove the directory and recreate it
     if os.path.exists(vector_store_dir):
         shutil.rmtree(vector_store_dir)
-        os.makedirs(vector_store_dir)
+        os.makedirs(vector_store_dir, mode=0o777)
+        
+        # Create an empty Chroma instance to initialize the database
+        try:
+            embeddings, _ = initialize_rag()
+            db = Chroma(
+                persist_directory=vector_store_dir,
+                embedding_function=embeddings,
+                collection_name="default"
+            )
+            # Ensure the database file has proper permissions
+            db_path = os.path.join(vector_store_dir, "chroma.sqlite3")
+            if os.path.exists(db_path):
+                os.chmod(db_path, 0o666)
+        except Exception as e:
+            print(f"Error initializing new Chroma instance: {e}")
     
     st.session_state.rag_initialized = False
     return True
@@ -153,6 +183,7 @@ with col1:
     if st.button("🔄 New Chat", help="Start a new conversation", use_container_width=True):
         st.session_state.messages = []
         st.session_state.message_history = []
+        reset_vector_store()
         st.rerun()
 
 # Add PDF, text file, and website upload section to sidebar
@@ -200,14 +231,7 @@ with st.sidebar:
                 else:
                     st.error("Failed to process website content.")
     
-    # Add reset vector store button
     st.markdown("---")
-    if st.button("🗑️ Reset Vector Store", help="Clear all vector store data", use_container_width=True):
-        with st.spinner("Resetting vector store..."):
-            if reset_vector_store():
-                st.success("Vector store has been reset successfully!")
-            else:
-                st.error("Failed to reset vector store.")
 
 # Modify the Agent creation to include RAG context
 def get_rag_context(query: str, k: int = 3) -> str:
