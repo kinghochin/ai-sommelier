@@ -221,7 +221,7 @@ with st.sidebar:
         st.success(f"Processed {len(uploaded_texts)} new text documents!")
     
     # Website URL Input
-    website_url = st.text_input("Add Website URL", placeholder="https://example.com")
+    website_url = st.text_input("Add Website URL", placeholder="https://www.majestic.co.uk/wine")
     if website_url:
         if st.button("Process Website"):
             with st.spinner("Processing website content..."):
@@ -230,7 +230,7 @@ with st.sidebar:
                     st.success("Website content processed successfully!")
                 else:
                     st.error("Failed to process website content.")
-    
+    st.caption("You can enhance the chatbot with up-to-date info, like https://www.majestic.co.uk/wine")
     st.markdown("---")
 
 # Modify the Agent creation to include RAG context
