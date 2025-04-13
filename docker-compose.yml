@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  agent-wine:
+    build: .
+    ports:
+      - "8502:8501" # Streamlit default port
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+      - ./data:/app/data:rw
+    user: root
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
