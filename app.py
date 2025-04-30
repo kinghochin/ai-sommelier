@@ -79,7 +79,7 @@ if "session_id" not in st.session_state:
         random.choices(string.ascii_letters + string.digits, k=16)
     )
 if "user_agent" not in st.session_state:
-    st.session_state.user_agent = st.experimental_get_query_params().get(
+    st.session_state.user_agent = st.query_params().get(
         "user_agent", ["Unknown"]
     )[0]
 
