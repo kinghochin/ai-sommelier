@@ -258,7 +258,7 @@ with col1:
 
 # Add PDF, text file, and website upload section to sidebar
 with st.sidebar:
-    st.header("Knowledge Base Management - provide your domain knowledge to enhance the agent")
+    st.header("Provide your domain knowledge to enhance the agent")
 
     # PDF Upload
     uploaded_pdfs = st.file_uploader(
