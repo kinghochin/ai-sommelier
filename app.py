@@ -377,7 +377,7 @@ for message in st.session_state.messages:
 # Example chat input placeholder
 if not st.session_state.messages:
     st.chat_message("assistant", avatar=MODEL_AVATARS[MODEL_CHOICE]).markdown(
-        "👋 Hi! In this demo, we can see how RAG can effectively enhance the limitation of LLM.\n\n"
+        "👋 Hi! In this demo, we can see how RAG can effectively overcome the limitation of LLM.\n\n"
         "You can find the difference before and after providing relevant info, and ask me questions like:\n\n"
         "\"Please pick the top 1 wine in 2024 for me!\"\n\n"
     )
