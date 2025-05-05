@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 SYSTEM_PROMPT = """
 ~~ CONTEXT: ~~
@@ -56,13 +57,13 @@ MODEL_CONFIG = {
 
 @dataclass
 class AgentDeps:
-    clothing_item: str | None
-    occasion: str | None
-    style_preference: str | None
-    color_preference: str | None
-    body_type: str | None
-    gender: str | None
-    season: str | None
-    budget: float | None
-    brand_preference: str | None
-    accessories: list[str] | None
+    clothing_item: Optional[str]
+    occasion: Optional[str]
+    style_preference: Optional[str]
+    color_preference: Optional[str]
+    body_type: Optional[str]
+    gender: Optional[str]
+    season: Optional[str]
+    budget: Optional[str]
+    brand_preference: Optional[str]
+    accessories: Optional[str]
