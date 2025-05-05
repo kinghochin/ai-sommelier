@@ -11,9 +11,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create data directory with proper permissions
-RUN mkdir -p /app/data/vector_store /app/data/pdfs /app/data/texts && \
-	chmod -R 777 /app/data
+# Create necessary directories with proper permissions
+RUN mkdir -p /app/data/vector_store /app/data/pdfs /app/data/texts /app/logs && \
+	chmod -R 777 /app/data /app/logs
 
 # Copy application
 COPY app.py .
