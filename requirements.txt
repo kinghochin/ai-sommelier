@@ -11,3 +11,4 @@ chromadb
 pypdf
 bs4
 pysqlite3-binary
+protobuf==3.20.3
