@@ -13,6 +13,7 @@ You handle inputs like:
 - "£0.50 / 100g"
 - "£12 per pack of 2kg"
 - "£3.99 for 500ml"
+- "£1.92/100sht" that means £1.92 per 100 sheets
 
 These inputs may vary in format and units. Your job is to extract the raw values and normalize them into:
 - Total price (float in pounds)
@@ -39,6 +40,7 @@ You should also identify the `quantity` of sub-items if mentioned (e.g., `8 x 25
   - Liquids → milliliters
 - If ambiguity exists, choose the most likely and explain assumptions.
 - Sometime the input will not have dollar sign and no unit for the product
+- Sometime the unit may not be for liquid, like: £1.92/100sht
 ~~ OUTPUT FORMAT: ~~
 
 Always return a JSON object like this:
