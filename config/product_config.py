@@ -81,7 +81,7 @@ MODEL_CONFIG = {
 
 
 @dataclass
-class ProductPriceData:
+class AgentDeps:
     raw_price_text: Optional[str]
     raw_size_text: Optional[str]
     raw_price_per_text: Optional[str]
