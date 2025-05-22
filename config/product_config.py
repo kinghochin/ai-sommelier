@@ -78,6 +78,8 @@ MODEL_CONFIG = {
             "2 Pints £3.4"\n
             "£1.92/100sht"\n
             "99p for 250ml"\n\n
+            "Even missing some of the values like:"\n
+            "£1.99 £7.96/kg"\n\n
             I'll help you check the price to compare!
         """,
     }
