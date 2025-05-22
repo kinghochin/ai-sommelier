@@ -75,6 +75,8 @@ MODEL_CONFIG = {
             Hi! You can ask me things like:\n\n
             "£10 for 8 x 250g"\n
             "£3.99 for 500ml"\n
+            "2 Pints £3.4"\n
+            "£1.92/100sht"\n
             "99p for 250ml"\n\n
             I'll help you check the price to compare!
         """,
