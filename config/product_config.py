@@ -38,7 +38,7 @@ You should also identify the `quantity` of sub-items if mentioned (e.g., `8 x 25
   - Solids → grams
   - Liquids → milliliters
 - If ambiguity exists, choose the most likely and explain assumptions.
-
+- Sometime the input will not have dollar sign and no unit for the product
 ~~ OUTPUT FORMAT: ~~
 
 Always return a JSON object like this:
