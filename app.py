@@ -44,6 +44,8 @@ elif AGENT_NAME == "drink":
     from config.drink_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
 elif AGENT_NAME == "product":
     from config.product_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
+elif AGENT_NAME == "law":
+    from config.law_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
 else:
     raise ValueError(f"Unknown AGENT_NAME: {AGENT_NAME}")
 
