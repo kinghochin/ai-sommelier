@@ -4,7 +4,6 @@ import sys
 sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
 import streamlit as st
 from pydantic import BaseModel
-from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.models.gemini import GeminiModel
 from pydantic_ai.messages import ModelMessage
