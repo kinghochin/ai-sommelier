@@ -37,6 +37,8 @@ AGENT_NAME = os.getenv("AGENT_NAME", "wine")
 print(f"Using AGENT: {AGENT_NAME}")
 if AGENT_NAME == "wine":
     from config.wine_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
+elif AGENT_NAME == "wine-admin":
+    from config.wine_admin_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
 elif AGENT_NAME == "fashion":
     from config.fashion_config import AgentDeps, SYSTEM_PROMPT, MODEL_CONFIG
 elif AGENT_NAME == "drink":
