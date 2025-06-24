@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 SYSTEM_PROMPT = """
 ~~ CONTEXT: ~~
@@ -64,16 +65,16 @@ MODEL_CONFIG = {
 
 @dataclass
 class AgentDeps:
-    wine_name: str | None
-    wine_region: str | None
-    wine_variety: str | None
-    wine_price: float | None
-    wine_vintage: int | None
-    wine_rating: float | None
-    wine_body: str | None  # Light, Medium, Full
-    wine_acidity: str | None  # Low, Medium, High
-    wine_tannin: str | None  # Soft, Medium, Firm
-    wine_alcohol: float | None  # Alcohol percentage
-    wine_sweetness: str | None  # Dry, Off-dry, Sweet
-    wine_producer: str | None
+    wine_name: Optional[str]
+    wine_region: Optional[str]
+    wine_variety: Optional[str]
+    wine_price: Optional[float]
+    wine_vintage: Optional[int]
+    wine_rating: Optional[float]
+    wine_body: Optional[str]  # Light, Medium, Full
+    wine_acidity: Optional[str]  # Low, Medium, High
+    wine_tannin: Optional[str]  # Soft, Medium, Firm
+    wine_alcohol: Optional[float]  # Alcohol percentage
+    wine_sweetness: Optional[str]  # Dry, Off-dry, Sweet
+    wine_producer: Optional[str]
     wine_notes: list[str] | None  # Tasting notes/flavors
