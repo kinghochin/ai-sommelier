@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import List, Optional
 
 SYSTEM_PROMPT = """
 ~~ CONTEXT: ~~
@@ -77,4 +77,4 @@ class AgentDeps:
     wine_alcohol: Optional[float]  # Alcohol percentage
     wine_sweetness: Optional[str]  # Dry, Off-dry, Sweet
     wine_producer: Optional[str]
-    wine_notes: list[str] | None  # Tasting notes/flavors
+    wine_notes: Optional[List[str]] # Tasting notes/flavors
